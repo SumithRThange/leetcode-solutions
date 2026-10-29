@@ -7,6 +7,7 @@ class Solution {
         Queue<String> queue = new LinkedList<>();
         queue.add(beginWord);
         Set<String> visited = new HashSet<>();
+        visited.add(beginWord);
         int changes = 1;
         while(!queue.isEmpty()){
             int size = queue.size();
