@@ -14,32 +14,32 @@
  * }
  */
 class Solution {
-    int lh = 0, rh = 0;
     public int countNodes(TreeNode root) {
-        if(root == null){
+        if (root == null) {
             return 0;
         }
-      lh = leftheight(root);
-       rh = rightheight(root);
-       if(lh == rh){
-       return  (int)Math.pow(2, lh + 1) -1;
-       } else {
-        return 1 + countNodes(root.left) + countNodes(root.right);
-       }
+        int lh = 0, rh = 0;
+        lh = leftheight(root);
+        rh = rightheight(root);
+        if (lh == rh) {
+            return (int) Math.pow(2, lh) - 1;
+        } else {
+            return 1 + countNodes(root.left) + countNodes(root.right);
+        }
     }
-    
-    private int leftheight(TreeNode root){
+
+    private int leftheight(TreeNode root) {
         int count = 0;
-        while(root.left != null){
+        while (root != null) {
             count++;
             root = root.left;
         }
         return count;
     }
 
-    private int rightheight(TreeNode root){
+    private int rightheight(TreeNode root) {
         int count = 0;
-        while(root.right != null){
+        while (root != null) {
             count++;
             root = root.right;
         }
