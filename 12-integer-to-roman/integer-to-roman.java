@@ -8,6 +8,9 @@ class Solution {
         StringBuilder result = new StringBuilder();
 
         for(int i=0; i<values.length; i++){
+            if(num == 0){
+                break;
+            }
             while(num >= values[i]){
                 result.append(symbold[i]);
                 num -= values[i];
