@@ -1,18 +1,23 @@
+
 class Solution {
     public int minimumSumSubarray(List<Integer> nums, int l, int r) {
         int n = nums.size();
         int min = Integer.MAX_VALUE;
 
-        for (int start = 0; start < n; start++) {
+        for (int i = 0; i < n; i++) {
             int sum = 0;
 
-            for (int end = start; end < n && end < start + r; end++) {
-                sum += nums.get(end);
+            for (int j = i; j < n; j++) {
+                sum += nums.get(j);
 
-                int len = end - start + 1;
+                int len = j - i + 1;
 
-                if (len >= l && sum > 0) {
+                if (len >= l && len <= r && sum > 0) {
                     min = Math.min(min, sum);
+                }
+
+                if (len >= r) {
+                    break;
                 }
             }
         }
