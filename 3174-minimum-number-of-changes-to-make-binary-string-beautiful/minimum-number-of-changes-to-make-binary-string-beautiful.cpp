@@ -1,10 +1,10 @@
 class Solution {
 public:
     int minChanges(string s) {
-        int count=0;
-        for(int i=0;i<s.size();i+=2){
-            if(s[i] != s[i+1]) count++;
+        int changes = 0;
+        for (int i = 0; i < s.size(); i += 2) {
+            if (s[i] != s[i + 1]) changes++;
         }
-        return count;
+        return changes;
     }
 };
