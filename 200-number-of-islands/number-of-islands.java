@@ -1,27 +1,24 @@
 class Solution {
     public int numIslands(char[][] grid) {
-        int m = grid.length, n = grid[0].length;
-        int noisland = 0;
-        for(int i=0;i<m;i++){
-            for(int j=0;j<n;j++){
-                if(grid[i][j]=='1'){
-                    noisland++;
-                    landtowater(grid, i, j);
+        int islands = 0;
+        for(int i=0;i<grid.length;i++){
+            for(int j=0;j<grid[0].length;j++){
+                if(grid[i][j] == '1'){
+                    islands++;
+                    oneToZero(i, j, grid);
                 }
             }
         }
-        return noisland;
+        return islands;
     }
 
-    private void landtowater(char[][] grid, int i, int j){
-        int m = grid.length, n = grid[0].length;
-        if(i<0 || i>=m || j<0 || j>=n || grid[i][j] == '0'){
-            return;
-        }
-        grid[i][j] = '0';
-        landtowater(grid, i-1, j);
-        landtowater(grid, i+1, j);
-        landtowater(grid, i, j-1);
-        landtowater(grid, i, j+1);
+    private void oneToZero(int r, int c, char[][] grid){
+        if(r < 0 || r >= grid.length || c < 0 || c >= grid[0].length || grid[r][c] == '0')
+        return;
+        grid[r][c] = '0';
+        oneToZero(r+1, c, grid);
+        oneToZero(r-1, c, grid);
+        oneToZero(r, c+1, grid);
+        oneToZero(r, c-1, grid);
     }
 }
